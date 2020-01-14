@@ -1,22 +1,23 @@
 function targetTerdekat(arr) {
   // you can only write your code here!
   var a =[], b =[]
-  var j =0, k =0, terdekat = 10000, jarak =0
+  var j =0, k =0, terdekat = '', jarak =0
     for (var i=0; i<arr.length; i++){
         if(arr[i]==='o'){ 
             a[j] = i
             j++
             if (k>0){
                 jarak=a[j-1]-b[k-1]
+                if(terdekat===''){terdekat = jarak}
                 if(jarak<terdekat){terdekat = jarak}
             }
-            else {terdekat = terdekat}
         }
         else if(arr[i]==='x'){
             b[k] = i
             k++
             if (j>0){
                 jarak=b[k-1]-a[j-1]
+                if(terdekat===''){terdekat = jarak}
                 if(jarak<terdekat){terdekat = jarak}
             }
         }
@@ -24,7 +25,7 @@ function targetTerdekat(arr) {
     //console.log(terdekat+"  <<terdekat")
         
     }
-    if (terdekat ===10000){terdekat =0}
+    if (k===0||j===0){terdekat =0}
     return terdekat
 }
 
